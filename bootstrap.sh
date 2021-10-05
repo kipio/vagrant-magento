@@ -59,23 +59,23 @@ sudo apt-get install unzip
 # MySQL setup for development purposes ONLY
 echo -e "\n\n------ Now installing MySQL and PhpMyAdmin ------\n"
 echo -e "Current time : $(date +'%T')\n"
-debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBPASSWD"
-debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBPASSWD"
-debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
-debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $DBPASSWD"
-debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $DBPASSWD"
-debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $DBPASSWD"
-debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none"
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBPASSWD"
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBPASSWD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $DBPASSWD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $DBPASSWD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $DBPASSWD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none"
 
 # sudo apt-get -y install mysql-server phpmyadmin >> /var/www/html/vm_build.log 2>&1
 sudo apt-get -y install mysql-server phpmyadmin
 
 echo -e "\n\n------ Now setting up MySQL user and databse ------\n"
 echo -e "Current time : $(date +'%T')\n"
-mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
-mysql -uroot -p$DBPASSWD -e "CREATE USER '$DBUSER'@'$DBHOST' identified by '$DBPASSWD'"
-mysql -uroot -p$DBPASSWD -e "GRANT ALL PRIVILEGES ON $DBNAME.* to '$DBUSER'@'$DBHOST'"
-mysql -uroot -p$DBPASSWD -e "FLUSH PRIVILEGES"
+sudo mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
+sudo mysql -uroot -p$DBPASSWD -e "CREATE USER '$DBUSER'@'$DBHOST' identified by '$DBPASSWD'"
+sudo mysql -uroot -p$DBPASSWD -e "GRANT ALL PRIVILEGES ON $DBNAME.* to '$DBUSER'@'$DBHOST'"
+sudo mysql -uroot -p$DBPASSWD -e "FLUSH PRIVILEGES"
 
 
 ##################################################################
