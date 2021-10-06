@@ -241,6 +241,10 @@ sudo php /var/www/html/magento2/bin/magento cache:flush
 echo -e "\n------ Setup:performance ------\n"
 echo -e "Current time : $(date +'%T')\n"
 sudo php /var/www/html/magento2/bin/magento setup:performance:generate-fixtures /var/www/html/magento2/setup/performance-toolkit/profiles/ce/small.xml
+# if error: SQLSTATE[HY000] [1044] Access denied for user 'magento2'@'localhost
+# then run the following command in phpmyadmin SQL
+# GRANT ALL PRIVILEGES ON * . * TO 'magento2'@'localhost';
+# FLUSH PRIVILEGES;
 
 echo -e "\n------ Setup:static-content:deploy ------\n"
 echo -e "Current time : $(date +'%T')\n"
