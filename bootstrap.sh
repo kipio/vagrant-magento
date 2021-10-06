@@ -259,3 +259,6 @@ echo -e "\n------ Diable Two Factor ------\n"
 echo -e "Current time : $(date +'%T')\n"
 sudo php /var/www/html/magento2/bin/magento module:disable Magento_TwoFactorAuth
 # above line shows error
+
+# check the following for updating vhost
+# https://magento.stackexchange.com/questions/306532/magento-2-how-to-add-virtual-domain-in-localhost
